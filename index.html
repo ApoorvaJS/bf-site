@@ -2,80 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Our Scrapbook 💕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #fff8f0;
-      color: #444;
+      padding: 0;
+      background: linear-gradient(135deg, #ffe6f7, #d9f0ff, #fff8e6);
+      font-family: 'Quicksand', sans-serif;
+      color: #3c3a36;
       text-align: center;
       overflow-x: hidden;
+      padding-bottom: 50px;
     }
 
     h1 {
-      font-size: 3em;
-      margin: 30px 0;
-      color: #ff4d6d;
-      font-family: 'Cursive', sans-serif;
+      font-family: 'Amatic SC', cursive;
+      font-size: 4em;
+      margin: 30px 10px 10px;
+      color: #8b5e3c;
     }
 
     p {
-      font-size: 1.2em;
-      max-width: 700px;
-      margin: 15px auto;
-      line-height: 1.6;
+      font-size: 1.4em;
+      margin: 15px auto 30px;
+      max-width: 90%;
+      line-height: 1.5;
     }
 
-    /* Scrapbook sticky notes */
-    .note {
-      background: #ffefc3;
-      width: 200px;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
-      transform: rotate(-3deg);
-      margin: 20px;
-      display: inline-block;
-      font-family: 'Comic Sans MS', cursive;
-    }
-    .note:nth-child(2) {
-      background: #c3f0ff;
-      transform: rotate(2deg);
-    }
-    .note:nth-child(3) {
-      background: #ffc3d6;
-      transform: rotate(-2deg);
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
     }
 
-    /* Polaroid-style photos */
     .polaroid {
-      display: inline-block;
-      background: white;
-      padding: 10px 10px 30px 10px;
-      margin: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      border-radius: 5px;
-      transform: rotate(-2deg);
-      transition: 0.3s;
+      background: #fff;
+      padding: 15px 10px 40px 10px;
+      border: 1px solid #ddd;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 350px;
+      position: relative;
+      margin: 0 auto;
+      transform: rotate(calc(-2deg + 4deg * var(--i)));
+      transition: transform 0.3s;
     }
+
     .polaroid:hover {
       transform: rotate(0deg) scale(1.05);
+      z-index: 10;
     }
+
     .polaroid img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
+      width: 100%;
+      height: auto;
+      border: 2px solid #eee;
+      background: #faf8f5;
       border-radius: 5px;
     }
 
-    /* Cute doodles (floating hearts) */
+    .caption {
+      margin-top: 12px;
+      font-family: 'Amatic SC', cursive;
+      font-size: 1.5em;
+      color: #7a5741;
+    }
+
+    .tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(calc(-5deg + 10deg * var(--i)));
+      width: 70px;
+      height: 20px;
+      background: #fffbf0;
+      border: 1px solid #d3c8b5;
+      box-shadow: 1px 2px 5px rgba(0,0,0,0.15);
+      z-index: 5;
+    }
+
+    .notes {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 40px;
+      align-items: center;
+    }
+
+    .note {
+      background: #fffae5;
+      width: 85%;
+      padding: 20px;
+      border: 1px solid #e3d8c2;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+      transform: rotate(calc(-2deg + 4deg * var(--j)));
+      font-family: 'Amatic SC', cursive;
+      font-size: 1.5em;
+      color: #5e4b3c;
+    }
+
     .floating-heart {
       position: fixed;
       bottom: -50px;
-      font-size: 30px;
+      font-size: 25px;
       animation: floatUp 6s linear infinite;
-      opacity: 0.8;
+      opacity: 0.7;
       z-index: -1;
     }
 
@@ -84,22 +122,21 @@
       100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
     }
 
-    /* Love letter popup */
     .love-letter-btn {
-      background: #ff4d6d;
+      background: #c27c5e;
       color: white;
       border: none;
-      padding: 15px 25px;
-      font-size: 1.2em;
-      border-radius: 30px;
+      padding: 20px 35px;
+      font-family: 'Amatic SC', cursive;
+      font-size: 1.8em;
+      border-radius: 40px;
       cursor: pointer;
-      margin: 40px auto;
-      display: inline-block;
-      transition: 0.3s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: background 0.3s, transform 0.3s;
+      margin-bottom: 40px;
     }
+
     .love-letter-btn:hover {
-      background: #e63950;
+      background: #a86247;
       transform: scale(1.05);
     }
 
@@ -107,115 +144,119 @@
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       justify-content: center;
       align-items: center;
+      z-index: 100;
     }
 
     .popup-content {
-      background: #fffdf7;
-      color: #333;
+      background: #fff8f2;
       padding: 30px;
       border-radius: 20px;
-      max-width: 500px;
-      text-align: center;
-      animation: fadeIn 1s ease-in-out;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-      font-family: 'Cursive', sans-serif;
+      max-width: 90%;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      font-family: 'Amatic SC', cursive;
+      font-size: 1.5em;
+      color: #5a4536;
+      line-height: 1.6;
+      text-align: left;
     }
 
     .close-btn {
-      background: #ff4d6d;
+      background: #c27c5e;
       color: white;
       border: none;
-      padding: 10px 20px;
-      margin-top: 20px;
-      border-radius: 20px;
+      padding: 15px 25px;
+      border-radius: 25px;
       cursor: pointer;
+      margin-top: 20px;
+      font-family: 'Amatic SC', cursive;
+      font-size: 1.4em;
     }
 
     footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      opacity: 0.7;
+      margin: 50px 0 30px;
+      font-size: 1em;
+      color: #8b7a6b;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @media (min-width: 600px) {
+      .grid {
+        gap: 20px;
+      }
+      .polaroid {
+        width: 45%;
+      }
+      .note {
+        width: 40%;
+      }
     }
+
   </style>
 </head>
 <body>
-  <h1>Our Scrapbook 💕</h1>
-  <p>Happy Boyfriend’s Day, love! Here are little pieces of us, captured in my scrapbook for you. 📖✨</p>
+  <h1>For My Love 💕</h1>
+  <p>Every little memory, every little laugh, this page is my heart for you ❤️</p>
 
-  <!-- Sticky notes -->
-  <div class="note">I love your smile 😍</div>
-  <div class="note">You’re my safe place 🫂</div>
-  <div class="note">Forever us ❤️</div>
-
-  <!-- Polaroid memories -->
-  <div class="polaroid">
-    <img src="REDTRIP.jpeg" alt="Memory1">
-    <p>Our First Trip ✈️</p>
+  <div class="grid">
+    <div class="polaroid" style="--i:0;">
+      <div class="tape"></div>
+      <img src="REDTRIP.jpeg" alt="Memory 1">
+      <div class="caption">Our First Trip ✈️</div>
+    </div>
+    <div class="polaroid" style="--i:0.2;">
+      <div class="tape"></div>
+      <img src="DATE.jpeg" alt="Memory 2">
+      <div class="caption">Cozy Date Night ☕</div>
+    </div>
+    <div class="polaroid" style="--i:-0.2;">
+      <div class="tape"></div>
+      <img src="GOOFYUS.jpeg" alt="Memory 3">
+      <div class="caption">Goofy Moments 🤪</div>
+    </div>
   </div>
-  <div class="polaroid">
-    <img src="DATE.jpeg" alt="Memory2">
-    <p>That Cute Date 🍕</p>
-  </div>
-  <div class="polaroid">
-    <img src="GOOFYUS.jpeg" alt="Memory3">
-    <p>Goofy Us 🤪</p>
+
+  <div class="notes">
+    <div class="note" style="--j:0;">Your laugh is my favorite sound 😊</div>
+    <div class="note" style="--j:0.3;">You’re my safe place 🫂</div>
+    <div class="note" style="--j:-0.3;">Forever and always 💕</div>
   </div>
 
-  <!-- Love Letter Button -->
-  <button class="love-letter-btn" onclick="openPopup()">💌 Open My Love Letter</button>
+  <button class="love-letter-btn" onclick="openPopup()">💌 Read My Love Letter</button>
 
-  <!-- Popup -->
   <div class="popup" id="popup">
     <div class="popup-content">
-      <h2>My Dearest ❤️</h2>
+      <h2>My Love,</h2>
       <p>
-        You’re my favorite person in the whole world.  
-        Every little moment with you feels like magic, and I’m so lucky I get to call you mine.  
-        Here’s to many more memories, laughter, and love-filled days together. 💕
+        From the moment I met you, my world changed. Every laugh, every hug, every shared dream makes me fall deeper in love.  
+        Thank you for being you — everything I ever wanted and more. I love you forever. 🌸
       </p>
       <button class="close-btn" onclick="closePopup()">Close</button>
     </div>
   </div>
 
-  <footer>
-    Made with love by ATG ✨
-  </footer>
+  <footer>Made with ♥ by Apoorva</footer>
 
   <script>
-    // Floating hearts
     function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "floating-heart";
-      heart.innerHTML = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (20 + Math.random() * 30) + "px";
-      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.innerText = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (20 + Math.random() * 25) + 'px';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 7000);
+      setTimeout(() => heart.remove(), 7000);
     }
-    setInterval(createHeart, 800);
+    setInterval(createHeart, 700);
 
-    // Love letter popup
     function openPopup() {
-      document.getElementById("popup").style.display = "flex";
+      document.getElementById('popup').style.display = 'flex';
     }
     function closePopup() {
-      document.getElementById("popup").style.display = "none";
+      document.getElementById('popup').style.display = 'none';
     }
   </script>
 </body>
 </html>
-
-
-
